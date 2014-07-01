@@ -17,14 +17,15 @@ public class Board extends Canvas implements Runnable {
 	
 	private static final long serialVersionUID = -8759813409014074654L;
 	
-	public  final static int TIMESHIFT = 10;
+	public final static int DEFAULT_SIZE = 80;
+	public final static int TIMESHIFT = 10;
 	public static final int WIDTH = PathFinder.WIDTH;
 	public static final int HEIGHT = PathFinder.HEIGHT;
 	public static final int TOTALHEIGHT = HEIGHT;
 	public static final int WAVESHIFT = 5000;
 	public static int SQUAREWIDTH = 0;
 	public static int SQUAREHEIGHT = 0;
-	
+	public static double CURRENT_SCALE_FACTOR = 0.0d;
 	private KeyAdapter keyAdapter;
 	private MouseAdapter mouseAdapter;
 	private MouseMotionListener mmListener;
@@ -87,6 +88,8 @@ public class Board extends Canvas implements Runnable {
 		
 		SQUAREWIDTH = Math.min(tempWidth, tempHeight);
 		SQUAREHEIGHT = SQUAREWIDTH;
+		
+		CURRENT_SCALE_FACTOR = (double)SQUAREWIDTH / DEFAULT_SIZE;
 		
 		System.out.println("S_Width = " + SQUAREWIDTH);
 		System.out.println("S_Height = " + SQUAREHEIGHT);

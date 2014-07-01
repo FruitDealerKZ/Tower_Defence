@@ -41,7 +41,6 @@ public class MotionObject extends GameObject {
 			currentPadding = padding;
 			dirY = 0;
 		}
-		System.out.println("DirX");
 	}
 	
 	public void setDirY(int dir) {
@@ -63,7 +62,6 @@ public class MotionObject extends GameObject {
 			currentPadding = padding;
 			dirX = 0;
 		}
-		System.out.println("DirY");
 	}
 	
 	public int getDirX() {

@@ -3,10 +3,8 @@ package units;
 import effects.Effect;
 
 import java.awt.image.BufferedImage;
-
 import java.io.File;
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -45,11 +43,11 @@ public abstract class AbstractMonster extends MotionObject implements Generator<
 	
 	public AbstractMonster(float x, float y, float speed) {
 		super(x,y,speed);
-		SpriteSheet sprite = new SpriteSheet(Singleton.getImage(getImageIndex()), 50, 50);
+		SpriteSheet sprite = new SpriteSheet(Singleton.getImage(getImageIndex()), (int) (50 * Board.CURRENT_SCALE_FACTOR), (int)(50 * Board.CURRENT_SCALE_FACTOR), Board.CURRENT_SCALE_FACTOR);
 		setAnimator(new Animator(sprite));
 		getAnimator().setTicks(1000);
 		getAnimator().setTimeShift(150);
-		setSize(50, 50);
+		setSize((int)(50 * Board.CURRENT_SCALE_FACTOR), (int)(50 * Board.CURRENT_SCALE_FACTOR));
 	}
 	
 	protected abstract int getImageIndex();

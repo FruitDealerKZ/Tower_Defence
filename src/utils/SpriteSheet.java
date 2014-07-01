@@ -1,5 +1,7 @@
 package utils;
 
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
 public class SpriteSheet {
@@ -9,8 +11,11 @@ public class SpriteSheet {
 	private int x = 0;
 	private int y = 0;
 	
-	public SpriteSheet(BufferedImage image, int tileSizeX, int tileSizeY) {
-		spriteSheet = image;
+	public SpriteSheet(BufferedImage image, int tileSizeX, int tileSizeY, double scale) {
+		if(scale != 1)
+			spriteSheet = scaleImage(image, scale);
+		else
+			spriteSheet = image;
 		this.xTILESIZE = tileSizeX;
 		this.yTILESIZE = tileSizeY;
 	}
@@ -41,5 +46,16 @@ public class SpriteSheet {
 	@Override
 	public boolean equals(Object o) {
 		return spriteSheet.equals(o);
+	}
+	
+	private BufferedImage scaleImage(BufferedImage before, double scaleKoeff) {
+		int w = before.getWidth();
+		int h = before.getHeight();
+		BufferedImage after = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+		AffineTransform at = new AffineTransform();
+		at.scale(scaleKoeff, scaleKoeff);
+		AffineTransformOp scaleOp = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
+		after = scaleOp.filter(before, after);
+		return after;
 	}
 }

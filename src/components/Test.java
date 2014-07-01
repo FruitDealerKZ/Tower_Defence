@@ -1,6 +1,5 @@
 package components;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -45,8 +44,8 @@ public class Test extends JPanel {
 		try {
 			image = ImageIO.read(new File("images//bullet.png"));
 			image2 = ImageIO.read(new File("images//towers//ordinary.png"));
-			a = new Animator(new SpriteSheet(image, 50, 3));
-			a2 = new Animator(new SpriteSheet(image2, 50, 50));
+			a = new Animator(new SpriteSheet(image, 50, 3, Board.CURRENT_SCALE_FACTOR));
+			a2 = new Animator(new SpriteSheet(image2, 50, 50, Board.CURRENT_SCALE_FACTOR));
 			a2.setTicks(10000);
 			a2.setTimeShift(10);
 		} catch(IOException e) {}

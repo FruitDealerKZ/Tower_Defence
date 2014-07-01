@@ -8,8 +8,9 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import specialEffects.SpecialEffect;
+import components.Board;
 
+import specialEffects.SpecialEffect;
 import units.AbstractMonster;
 import units.GameObject;
 import utils.Animator;
@@ -51,8 +52,8 @@ public abstract class AbstractTower extends GameObject {
 		super(x,y);
 		this.damage = damage;
 		this.radius = radius;
-		setAnimator(new Animator(new SpriteSheet(Singletone.getImage(getImageIndex()), 80, 80)));
-		setSize(80, 80);
+		setAnimator(new Animator(new SpriteSheet(Singletone.getImage(getImageIndex()), Board.SQUAREWIDTH, Board.SQUAREHEIGHT, Board.CURRENT_SCALE_FACTOR)));
+		setSize(Board.SQUAREWIDTH, Board.SQUAREHEIGHT);
 	}
 	
 	public boolean constructed(float timeShift) {

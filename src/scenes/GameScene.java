@@ -45,7 +45,6 @@ import units.GameObject;
 import units.Monster;
 import utils.Animator;
 import utils.Generator;
-import utils.ImageCollection;
 import utils.PathFinder;
 import utils.Position;
 import utils.SpriteSheet;
@@ -208,7 +207,7 @@ public class GameScene implements Scene {
 		
 		try {
 			BufferedImage baseImage = ImageIO.read(new File("images//base.png"));
-			SpriteSheet baseSheet = new SpriteSheet(baseImage, 150, 50);
+			SpriteSheet baseSheet = new SpriteSheet(baseImage, 150, 50, Board.CURRENT_SCALE_FACTOR);
 			base = new GameObject();
 			base.setAnimator(new Animator(baseSheet));
 			base.setHealth(10);
@@ -464,7 +463,7 @@ public class GameScene implements Scene {
 		g.drawImage(background, 0, 0, width, height, null);
 		g.setBackground(Color.GRAY.darker());
 //		System.out.println("Width: " + width + " Height: " + height);
-//		System.out.println("S Width: " + Board.SQUAREWIDTH + " S Height: " + Board.SQUAREHEIGHT);
+		System.out.println("S Width: " + Board.SQUAREWIDTH + " S Height: " + Board.SQUAREHEIGHT);
 		short[][] map = PathFinder.map;
 		int width = Board.SQUAREWIDTH;
 		int height = Board.SQUAREHEIGHT;
@@ -497,20 +496,6 @@ public class GameScene implements Scene {
 		transform.setToTranslation(x, y);
 		int height = image.getHeight()/2;
 		int width = image.getWidth()/2;
-/*		if(o.getAngle() > 0 && o.getAngle() < 90) {
-			width = image.getWidth()/2;
-			height = image.getHeight();
-			System.out.println(1 + " dir = " + o.rotateDirection);
-		}
-		if(o.getAngle() > 90 && o.getAngle() < 180) {
-			width = image.getWidth();
-			height = image.getHeight()/2;
-			System.out.println(2 + " dir = " + o.rotateDirection);
-		}
-		if(o.getAngle() > 180 && o.getAngle() < 270)
-			System.out.println(3 + " dir = " + o.rotateDirection);
-		if(o.getAngle() > 270 && o.getAngle() < 360)
-			System.out.println(4 + " dir = " + o.rotateDirection);*/
 		transform.rotate(Math.toRadians(o.getAngle()), width,height);
 		g.drawImage(image, transform, null);
 	}
