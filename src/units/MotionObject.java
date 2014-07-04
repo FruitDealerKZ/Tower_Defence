@@ -102,15 +102,15 @@ public class MotionObject extends GameObject {
 		if(dirY != 0) {
 			pos.setX(pos.X());
 		}
-		if(isRotating) {
+		/*if(isRotating) {
 			setAngle((getAngle() + rotateDirection * 2.2f) % 360);
 			if(Math.abs(currentAngle - getAngle()) <= 2.2f) {
 				setAngle(currentAngle);
 				isRotating = false;
 			}
 		}
-		
-		if(rotateX) {
+		*/
+		/*if(rotateX) {
 			currentPadding -= acceleration + speed;
 			if(currentPadding < (acceleration + speed)) {
 				rotateX = false;
@@ -125,13 +125,11 @@ public class MotionObject extends GameObject {
 				dirY = 0;
 				currentPadding = padding;
 			}
-		}
+		}*/
 		
 		pos.setX(pos.X() + acceleration * dirX + speed * dirX);
 		pos.setY(pos.Y() + acceleration * dirY + speed * dirY);
 		setPosition(pos);
-		System.out.println("Dirx = " + dirX + " DirY = " + dirY);
-		//System.out.println(pos);
 	}
 	
 	@Override

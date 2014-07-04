@@ -207,7 +207,7 @@ public class GameScene implements Scene {
 		
 		try {
 			BufferedImage baseImage = ImageIO.read(new File("images//base.png"));
-			SpriteSheet baseSheet = new SpriteSheet(baseImage, 150, 50, Board.CURRENT_SCALE_FACTOR);
+			SpriteSheet baseSheet = new SpriteSheet(baseImage, (int)(150 * Board.CURRENT_SCALE_FACTOR), (int)(50 * Board.CURRENT_SCALE_FACTOR), Board.CURRENT_SCALE_FACTOR);
 			base = new GameObject();
 			base.setAnimator(new Animator(baseSheet));
 			base.setHealth(10);
@@ -462,8 +462,6 @@ public class GameScene implements Scene {
 
 		g.drawImage(background, 0, 0, width, height, null);
 		g.setBackground(Color.GRAY.darker());
-//		System.out.println("Width: " + width + " Height: " + height);
-		System.out.println("S Width: " + Board.SQUAREWIDTH + " S Height: " + Board.SQUAREHEIGHT);
 		short[][] map = PathFinder.map;
 		int width = Board.SQUAREWIDTH;
 		int height = Board.SQUAREHEIGHT;
@@ -477,7 +475,7 @@ public class GameScene implements Scene {
 				}
 				else if(map[i][j] == 2) {
 					base.setAngle(270);
-					base.setPosition(new Position(j, i));
+					base.setPosition(new Position(j - 1, i));
 				}
 			}
 		}
