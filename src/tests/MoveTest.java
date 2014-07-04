@@ -45,15 +45,7 @@ public class MoveTest extends JPanel {
 	
 	@Override
 	public void paint(Graphics g) {
-		if(angle++ < 270) {
-			xOffset = Math.cos(Math.toRadians(angle));
-			yOffset = Math.sin(Math.toRadians(angle));
-		}
 		
-		x += speed * xOffset;
-		y += speed * yOffset;
-		
-		g.drawRect(x, y, width, height);
 	}
 	
 	public void game() {
